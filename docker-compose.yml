@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    ports:
+      - "32000:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=colegio
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+  usuarios:
+    build: ./appColegio/microUsuarios
+    container_name: usuarios
+    ports:
+      - "3001:3001"
+    links:
+      - db
+  productos:
+    build: ./appColegio/microNotas
+    container_name: notas
+    ports:
+      - "3002:3002"
+    links:
+      - db
+    links:
+      - db
+      - usuarios
+      - notas
+  web:
+    build: ./APPWEB
+    container_name: web
+    ports:
+      - "8080:80"
+    links:
+      - usuarios
+      - notas
