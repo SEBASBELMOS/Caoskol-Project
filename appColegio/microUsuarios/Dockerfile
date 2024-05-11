@@ -4,7 +4,7 @@ WORKDIR /microUsuarios
 COPY package.json .
 RUN npm install
 
-EXPOSE 3001
+EXPOSE 3030
 
 COPY . .
 CMD npm start

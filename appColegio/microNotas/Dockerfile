@@ -4,7 +4,7 @@ WORKDIR /microNotas
 COPY package.json .
 RUN npm install
 
-EXPOSE 3002
+EXPOSE 3031
 
 COPY . .
 CMD npm start
