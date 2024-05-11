@@ -5,6 +5,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(usuariosController);
-app.listen(3007, () => {
-    console.log('Microservicio Usuarios ejecutandose en el puerto 3007');
+
+app.listen(3030, () => {
+    console.log('Microservicio Usuarios ejecutandose en el puerto 3030');
 });

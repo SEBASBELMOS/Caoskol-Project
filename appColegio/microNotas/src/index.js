@@ -5,6 +5,6 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(notasController);
-app.listen(3008, () => {
-    console.log('Microservicio Notas ejecutandose en el puerto 3008');
+app.listen(3031, () => {
+    console.log('Microservicio Notas ejecutandose en el puerto 3031');
 });

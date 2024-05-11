@@ -1,9 +1,8 @@
 const mysql = require('mysql2/promise');
+const axios = require('axios');
 const connection = mysql.createPool({
-//host: 'localhost',
-host: '192.168.100.2',
+host: 'localhost',
 user: 'root',
-port: 3306,
 password: 'password',
 database: 'colegio'
 });
@@ -19,4 +18,30 @@ async function validarUsuario(id, clave) {
     }
 }
 
-module.exports = { validarUsuario };
+async function agregarUsuario(id, nombre, rol, grado, clave) {
+    try {
+        
+        await connection.query('INSERT INTO usuarios (id, nombre, rol, grado, clave) VALUES (?, ?, ?, ?, ?)', [id, nombre, rol, grado,clave]);
+    } catch (error) {
+        console.error('Error al agregar usuario:', error);
+        throw error;
+    }
+}
+
+async function todosUsuarios() {
+    const query = "SELECT nombre, grado FROM usuarios";
+    const [result] = await connection.query(query); 
+    return result;
+}
+
+async function eliminarUsuario(id) {
+    try {
+        const query = 'DELETE FROM usuarios WHERE id = ?';
+        await connection.query(query, [id]);
+    } catch (error) {
+        console.error('Error al eliminar usuario:', error);
+        throw error;
+    }
+}
+
+module.exports = { validarUsuario, agregarUsuario, todosUsuarios, eliminarUsuario };
