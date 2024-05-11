@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: mysql:5.7
@@ -11,42 +9,27 @@ services:
       - MYSQL_DATABASE=colegio
     volumes:
       - ./db:/docker-entrypoint-initdb.d
-    networks:
-      - app-network
-
   usuarios:
     build: ./appColegio/microUsuarios
     container_name: usuarios
     ports:
       - "3001:3001"
-    depends_on:
+    links:
       - db
       - notas
-    networks:
-      - app-network
-
   notas:
     build: ./appColegio/microNotas
     container_name: notas
     ports:
       - "3002:3002"
-    depends_on:
+    links:
       - db
       - usuarios
-    networks:
-      - app-network
-
   web:
     build: ./APPWEB
     container_name: web
     ports:
       - "8080:80"
-    depends_on:
+    links:
       - usuarios
       - notas
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
