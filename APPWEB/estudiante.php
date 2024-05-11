@@ -8,8 +8,8 @@ $id = $_SESSION["id"];
 
 
 // URL del microservicio de notas para obtener los datos del usuario
-#$servurl = "http://localhost:3008/notas/$id";
-$servurl = "http://192.168.100.2:3008/notas/$id";
+#$servurl = "http://localhost:3031/notas/$id";
+$servurl = "http://192.168.100.2:3031/notas/$id";
 
 
 // Iniciar la solicitud cURL para obtener los datos del usuario

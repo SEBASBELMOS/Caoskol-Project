@@ -18,7 +18,7 @@ services:
     build: ./appColegio/microUsuarios
     container_name: usuarios
     ports:
-      - "3021:3001"  # Cambiado de 3001 a 3021
+      - "3030:3001"  # Cambiado de 3001 a 3030
     depends_on:
       - db
     networks:
@@ -28,7 +28,7 @@ services:
     build: ./appColegio/microNotas
     container_name: notas
     ports:
-      - "3022:3002"  # Cambiado de 3002 a 3022
+      - "3031:3002"  # Cambiado de 3002 a 3031
     depends_on:
       - db
     networks:

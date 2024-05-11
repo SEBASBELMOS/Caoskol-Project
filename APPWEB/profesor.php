@@ -34,8 +34,8 @@
     function obtenerDatosPuntajes()
     {
         try {
-            #$response = file_get_contents('http://localhost:3008/notas/todas/.');
-            $response = file_get_contents('http://192.168.100.2:3008/notas/todas/.');
+            #$response = file_get_contents('http://localhost:3031/notas/todas/.');
+            $response = file_get_contents('http://192.168.100.2:3031/notas/todas/.');
             if (!$response) {
                 throw new Exception('Error al obtener los datos');
             }

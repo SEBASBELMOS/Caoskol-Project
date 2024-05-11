@@ -5,8 +5,8 @@ $clave = $_POST["clave"];
 
 
 // URL del servicio de validación de usuarios
-#$servurl = "http://localhost:3007/login/$id/$clave";
-$servurl = "http://192.168.100.2:3007/login/$id/$clave";
+#$servurl = "http://localhost:3030/login/$id/$clave";
+$servurl = "http://192.168.100.2:3030/login/$id/$clave";
 
 
 // Iniciar la solicitud cURL
