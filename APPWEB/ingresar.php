@@ -21,7 +21,7 @@ $response = curl_exec($curl);
 // Verificar si hubo un error en la conexión cURL
 if ($response === false) {
     // Si hubo un error, redirigir al usuario a la página de inicio y mostrar un mensaje de error (opcional)
-    //echo "Error en la conexión cURL: " . curl_error($curl);
+    echo "Error en la conexión cURL: " . curl_error($curl);
     header("Location:index.html");
     exit();
 }
@@ -48,14 +48,14 @@ if ($resp !== null) {
         exit();
     } else {
         // Si la ID no es correcta o el rol no está definido, mostrar un mensaje de error (opcional)
-        //echo "Error: La ID de usuario no es correcta o el rol no está definido";
+        echo "Error: La ID de usuario no es correcta o el rol no está definido";
         // Redirigir al usuario a la página de inicio
         header("Location:index.html");
         exit();
     }
 } else {
     // Si la respuesta es nula, mostrar un mensaje de error (opcional)
-    //echo "Error: Respuesta nula del servicio de validación de usuarios";
+    echo "Error: Respuesta nula del servicio de validación de usuarios";
     // Redirigir al usuario a la página de inicio
     header("Location:index.html");
     exit();
