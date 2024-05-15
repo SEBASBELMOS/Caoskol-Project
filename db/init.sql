@@ -27,7 +27,7 @@ INSERT INTO notas (id, nombre, grado, num_premios, programa, puntaje_mat, puntaj
 (3, 'María Fernanda Tello', 11, 11, 1, 90, 82, 88),
 (4, 'Sebastian Belalcazar', 10, 9, 0, 90, 90, 80),
 (5, 'Lewis Hamilton', 9, 10, 3, 88, 85, 91),
-(6, 'Carlos Sainz', 8, 12, 2, 80, 87, 90);
+(6, 'Carlos Sainz', 8, 12, 0, 80, 87, 90);
 
 INSERT INTO usuarios (id, nombre, grado, clave, rol) VALUES
 (1, 'Admin',NULL, 'admin', 'Administrador'),
