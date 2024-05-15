@@ -3,14 +3,9 @@
 session_start();
 
 
-// Verificar si el ID está definido en la sesión
-if (!isset($_SESSION["id"])) {
-    // Redirigir al usuario al formulario de inicio de sesión con un mensaje de error
-    header("Location: index.html?error=" . urlencode("No se ha iniciado sesión correctamente."));
-    exit();
-}
-
+// Obtener el ID del usuario autenticado
 $id = $_SESSION["id"];
+
 
 // URL del microservicio de notas para obtener los datos del usuario
 #$servurl = "http://localhost:3031/notas/$id";
