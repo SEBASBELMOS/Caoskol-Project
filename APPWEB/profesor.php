@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,23 +9,157 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         h1 {
-            font-size: 24px; /* Tamaño del título principal */
+            font-size: 24px;
         }
 
 
         h2 {
-            font-size: 20px; /* Tamaño del título secundario */
+            font-size: 20px;
         }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007aff; /* Color de Apple */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #f0ad4e;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            margin-top: 40px;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            padding: 8px 12px;
+            background-color: #007aff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 100px;
+        }
+
+        nav a:hover {
+            background-color: #f0ad4e;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Sofia Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+        }
+
+        .jumbotron {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .custom-title {
+            color: #333333;
+            font-size: 42px; 
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            font-weight: bold; 
+        }
+
+        .lead {
+            color: #666666; 
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border-color: #d3d3d3;
+        }
+
+        .form-label {
+            color: #666666;
+            font-size: 16px;
+            margin-bottom: 10px; 
+        }
+
+        .btn-primary {
+            background-color: #f0ad4e;
+            border-color: #f0ad4e;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 100%; 
+        }
+
+        .btn-primary:hover {
+            background-color: #ee9d2d; 
+            border-color: #ee9d2d;
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(240, 173, 78, 0.5); 
+        }
+    </style>
     </style>
 </head>
 
-
 <body>
+<div class="container">
+            <h1>Bienvenido</h1>
+            <nav>
+                <a href="logout.php">Cerrar Sesión</a>
+            </nav>
+        </div>
     <div style="max-width: 600px; margin: 0 auto;">
         <h1>Estadísticas de notas de estudiantes</h1>
         <h2>Histograma de promedio de puntaje por prueba</h2>
         <canvas id="histogramaPromedioPuntaje"></canvas>
     </div>
+
 
 
     <?php
