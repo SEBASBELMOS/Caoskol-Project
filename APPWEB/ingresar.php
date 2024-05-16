@@ -41,6 +41,9 @@ if ($resp !== null) {
             case "Profesor":
                 header("Location: profesor.php");
                 break;
+            case "Administrador":
+                header("Location: profesor.php");
+                break;
             case "Estudiante":
                 header("Location: estudiante.php");
                 break;
