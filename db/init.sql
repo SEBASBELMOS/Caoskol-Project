@@ -35,5 +35,6 @@ INSERT INTO usuarios (id, nombre, grado, clave, rol) VALUES
 (3, 'Maria Fernanda Tello', 11, '1234', 'Estudiante'),
 (4, 'Sebastian Belalcazar', 10, '1234', 'Estudiante'),
 (5, 'Lewis Hamilton', 9, '1234', 'Estudiante'),
-(6, 'Carlos Sainz', 8, '1234', 'Estudiante');
-(7, 'Toto Wolff', 11, '1234', 'Profesor');
+(6, 'Carlos Sainz', 8, '1234', 'Estudiante'),
+(7, 'Toto Wolff', 11, '1234', 'Profesor'),
+(8, 'Guenther Steiner', 8, '1234', 'Profesor');
