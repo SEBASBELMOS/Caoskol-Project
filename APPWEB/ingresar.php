@@ -37,10 +37,12 @@ if ($resp !== null) {
         $_SESSION["rol"] = $resp->rol;
 
         // Manejar redirecciones basadas en el rol
-        switch($resp->rol) {
+        switch ($resp->rol) {
             case "Profesor":
-            case "Administrador":
                 header("Location: profesor.php");
+                break;
+            case "Administrador":
+                header("Location: admin.php");  
                 break;
             case "Estudiante":
                 header("Location: estudiante.php");
