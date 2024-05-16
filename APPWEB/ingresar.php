@@ -22,7 +22,7 @@ curl_close($curl);
 // Verificar si hubo un error en la conexión cURL
 if ($response === false) {
     $error = urlencode("Error en la conexión cURL: " . curl_error($curl));
-    header("Location: index.php?error=$error");
+    header("Location: index.html?error=$error");
     exit();
 }
 
@@ -49,18 +49,18 @@ if ($resp !== null) {
                 break;
             default:
                 $error = urlencode("Rol no definido o no permitido");
-                header("Location: index.php?error=$error");
+                header("Location: index.html?error=$error");
                 break;
         }
         exit();
     } else {
         $error = urlencode("ID de usuario incorrecta o el rol no está definido");
-        header("Location: index.php?error=$error");
+        header("Location: index.html?error=$error");
         exit();
     }
 } else {
     $error = urlencode("Respuesta nula del servicio de validación de usuarios");
-    header("Location: index.php?error=$error");
+    header("Location: index.html?error=$error");
     exit();
 }
 
