@@ -31,16 +31,14 @@ $resp = json_decode($response);
 
 // Verificar si se recibió una respuesta válida
 if ($resp !== null) {
-    // Verificar si el usuario es válido y si tiene un rol definido
     if (isset($resp->id) && $resp->id == $id && isset($resp->rol)) {
         session_start();
         $_SESSION["id"] = $id;
         $_SESSION["rol"] = $resp->rol;
 
+        // Manejar redirecciones basadas en el rol
         switch($resp->rol) {
             case "Profesor":
-                header("Location: profesor.php");
-                break;
             case "Administrador":
                 header("Location: profesor.php");
                 break;
