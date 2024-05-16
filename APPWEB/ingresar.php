@@ -21,23 +21,46 @@ curl_close($curl);
 
 // Verificar si hubo un error en la conexión cURL
 if ($response === false) {
-    echo "Error en la conexión cURL: " . curl_error($curl);
-    ob_end_flush(); // Limpiar y enviar el búfer, evita redirecciones para ver el error
+    $error = urlencode("Error en la conexión cURL: " . curl_error($curl));
+    header("Location: index.php?error=$error");
     exit();
 }
 
 // Decodificar la respuesta JSON
 $resp = json_decode($response);
 
-// Imprimir la respuesta cruda y la decodificada para depuración
-echo "<pre>Respuesta del servicio: ";
-print_r($response);
-echo "</pre>";
+// Verificar si se recibió una respuesta válida
+if ($resp !== null) {
+    // Verificar si el usuario es válido y si tiene un rol definido
+    if (isset($resp->id) && $resp->id == $id && isset($resp->rol)) {
+        session_start();
+        $_SESSION["id"] = $id;
+        $_SESSION["rol"] = $resp->rol;
 
-echo "<pre>Decoded JSON: ";
-print_r($resp);
-echo "</pre>";
+        switch($resp->rol) {
+            case "Profesor":
+                header("Location: profesor.php");
+                break;
+            case "Estudiante":
+                header("Location: estudiante.php");
+                break;
+            default:
+                $error = urlencode("Rol no definido o no permitido");
+                header("Location: index.php?error=$error");
+                break;
+        }
+        exit();
+    } else {
+        $error = urlencode("ID de usuario incorrecta o el rol no está definido");
+        header("Location: index.php?error=$error");
+        exit();
+    }
+} else {
+    $error = urlencode("Respuesta nula del servicio de validación de usuarios");
+    header("Location: index.php?error=$error");
+    exit();
+}
 
-// Aquí puedes pausar la depuración comentando el resto del flujo
-// y verificando los datos impresos. Luego de resolver los errores, puedes continuar con el flujo normal.
+// Limpiar y desactivar el búfer de salida
+ob_end_clean();
 ?>
