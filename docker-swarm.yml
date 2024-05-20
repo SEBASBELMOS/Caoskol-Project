@@ -18,7 +18,7 @@ services:
         condition: on-failure
 
   usuarios:
-    image: root/usuarios:latest
+    image: sebasbelmos/usuarios:latest
     ports:
       - "3030:3030"
     networks:
@@ -31,7 +31,7 @@ services:
       - db
 
   notas:
-    image: root/notas:latest
+    image: sebasbelmos/notas:latest
     ports:
       - "3031:3031"
     networks:
@@ -44,7 +44,7 @@ services:
       - db
 
   web:
-    image: root/web:latest
+    image: sebasbelmos/web:latest
     ports:
       - "8090:80"
     networks:
