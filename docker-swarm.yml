@@ -3,7 +3,6 @@ version: '3.8'
 services:
   db:
     image: mysql:5.7
-    container_name: db
     ports:
       - "32001:3306"
     environment:
@@ -19,8 +18,7 @@ services:
         condition: on-failure
 
   usuarios:
-    build: ./appColegio/microUsuarios
-    container_name: usuarios
+    image: root/usuarios:latest
     ports:
       - "3030:3030"
     networks:
@@ -33,8 +31,7 @@ services:
       - db
 
   notas:
-    build: ./appColegio/microNotas
-    container_name: notas
+    image: root/notas:latest
     ports:
       - "3031:3031"
     networks:
@@ -47,8 +44,7 @@ services:
       - db
 
   web:
-    build: ./APPWEB
-    container_name: web
+    image: root/web:latest
     ports:
       - "8090:80"
     networks:
