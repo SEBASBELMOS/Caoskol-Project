@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    ports:
+      - "32001:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=colegio
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  usuarios:
+    build: ./appColegio/microUsuarios
+    container_name: usuarios
+    ports:
+      - "3030:3030"
+    networks:
+      - app-network
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - db
+
+  notas:
+    build: ./appColegio/microNotas
+    container_name: notas
+    ports:
+      - "3031:3031"
+    networks:
+      - app-network
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - db
+
+  web:
+    build: ./APPWEB
+    container_name: web
+    ports:
+      - "8090:80"
+    networks:
+      - app-network
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - usuarios
+      - notas
+
+networks:
+  app-network:
+    driver: overlay
