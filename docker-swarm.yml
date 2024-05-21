@@ -47,16 +47,18 @@ services:
   haproxy:
     image: haproxy:latest
     ports:
-      - "80:80"  # Exponer el puerto 80 en el host para el tráfico HTTP
-      - "443:443" # Opcional si deseas HTTPS
-    volumes:
-      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - "80:80"
+      - "443:443"
     networks:
       - app-network
+    configs:
+      - source: haproxy_cfg
+        target: /usr/local/etc/haproxy/haproxy.cfg
+        mode: 0440
     deploy:
       replicas: 1
       placement:
-        constraints: [node.role == manager]  # Opcional: colocar en el nodo manager
+        constraints: [node.role == manager]
       restart_policy:
         condition: on-failure
 
