@@ -19,6 +19,8 @@ services:
 
   usuarios:
     image: sebasbelmos/usuarios:latest
+    ports:
+      - "3030:3030"
     networks:
       - app-network
     deploy:
@@ -28,6 +30,8 @@ services:
 
   notas:
     image: sebasbelmos/notas:latest
+    ports:
+      - "3031:3031"
     networks:
       - app-network
     deploy:
@@ -37,6 +41,8 @@ services:
 
   web:
     image: sebasbelmos/web:latest
+    ports:
+      - "8090:80"
     networks:
       - app-network
     deploy:
@@ -46,9 +52,13 @@ services:
 
   haproxy:
     image: haproxy:latest
+    depends_on:
+      - web
+      - usuarios
+      - notas
     ports:
-      - "80:80"  # Exponer el puerto 80 en el host para el tráfico HTTP
-      - "443:443" # Opcional si deseas HTTPS
+      - "80:80"
+      - "443:443"
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     networks:
@@ -56,7 +66,10 @@ services:
     deploy:
       replicas: 1
       placement:
-        constraints: [node.role == manager]  # Opcional: colocar en el nodo manager
+        constraints: [node.role == manager]
+      update_config:
+        parallelism: 1
+        delay: 10s
       restart_policy:
         condition: on-failure
 
