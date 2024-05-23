@@ -56,7 +56,7 @@ services:
         constraints:
           - node.role == manager
     configs:
-      - source: haproxy_config
+      - source: haproxy_config_v1
         target: /usr/local/etc/haproxy/haproxy.cfg
 
 configs:
