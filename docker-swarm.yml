@@ -19,6 +19,8 @@ services:
 
   usuarios:
     image: sebasbelmos/usuarios:latest
+    ports:
+      - "3030:3030"
     networks:
       - app-network
     deploy:
@@ -28,6 +30,8 @@ services:
 
   notas:
     image: sebasbelmos/notas:latest
+    ports:
+      - "3031:3031"
     networks:
       - app-network
     deploy:
