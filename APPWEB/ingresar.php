@@ -7,7 +7,8 @@ $id = $_POST["id"] ?? '';
 $clave = $_POST["clave"] ?? '';
 
 // URL del servicio de validación de usuarios
-$servurl = "http://192.168.100.2:3030/login/$id/$clave";
+#$servurl = "http://192.168.100.2:3030/login/$id/$clave";
+$servurl = "http://192.168.100.3:3030/login/$id/$clave";
 
 // Iniciar la solicitud cURL
 $curl = curl_init($servurl);

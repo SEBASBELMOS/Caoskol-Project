@@ -168,7 +168,8 @@
     function obtenerDatosPuntajes()
     {
         try {
-            $response = file_get_contents('http://192.168.100.2:3031/notas/todas/.');
+            #$response = file_get_contents('http://192.168.100.2:3031/notas/todas/.');
+            $response = file_get_contents('http://192.168.100.3:3031/notas/todas/.');
             if (!$response) {
                 throw new Exception('Error al obtener los datos');
             }
