@@ -48,7 +48,6 @@ services:
     image: haproxy:latest
     ports:
       - "6080:80"
-      - "443:443"
     networks:
       - app-network
     deploy:
