@@ -22,7 +22,7 @@ CREATE TABLE usuarios (
 );
 
 
-INSERT INTO notas (id, nombre, grado, num_premios, programa, puntaje_mat, puntaje_ing, puntaje_ciencias) VALUES
+/*INSERT INTO notas (id, nombre, grado, num_premios, programa, puntaje_mat, puntaje_ing, puntaje_ciencias) VALUES
 (2, 'Ana Quintero', 10, 2, 2, 85, 78, 92),
 (3, 'Maria Fernanda Tello', 11, 0, 1, 90, 82, 88),
 (4, 'Sebastian Belalcazar', 10, 0, 0, 90, 90, 80),
@@ -38,4 +38,12 @@ INSERT INTO usuarios (id, nombre, grado, clave, rol) VALUES
 (6, 'Carlos Sainz', 8, '1234', 'Estudiante'),
 (7, 'Toto Wolff', 11, '1234', 'Profesor'),
 (8, 'Guenther Steiner', 8, '1234', 'Profesor'),
-(9, 'Admin 2', NULL, '1234', 'Administrador');
+(9, 'Admin 2', NULL, '1234', 'Administrador');*/
+
+LOAD DATA INFILE 'Caoskol-Project\US_Dataset.csv'
+INTO TABLE tu_tabla
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
