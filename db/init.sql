@@ -23,24 +23,24 @@ CREATE TABLE usuarios (
 
 
 
-DATOS PRUEBA
 INSERT INTO notas (id, nombre, grado, num_premios, programa, puntaje_mat, puntaje_ing, puntaje_ciencias) VALUES
-(2, 'Ana Quintero', 10, 2, 2, 85, 78, 92),
-(3, 'Maria Fernanda Tello', 11, 0, 1, 90, 82, 88),
+(2, 'Michael Miller', 10, 2, 2, 85, 78, 92),
+(3, 'Linda Miller', 11, 0, 1, 90, 82, 88),
 (4, 'John Walker', 10, 0, 0, 90, 90, 80),
-(5, 'Lewis Hamilton', 9, 10, 3, 88, 85, 91),
-(6, 'Carlos Sainz', 8, 12, 0, 80, 87, 90);
+(5, 'Robert Smith', 9, 10, 3, 88, 85, 91),
+(6, 'James Johnson', 8, 12, 0, 80, 87, 90);
 
 INSERT INTO usuarios (id, nombre, grado, clave, rol) VALUES
 (1, 'Admin',NULL, 'admin', 'Administrador'),
-(2, 'Ana Quintero', 10, '1234', 'Estudiante'),
-(3, 'Maria Fernanda Tello', 11, '1234', 'Estudiante'),
+(2, 'Michael Miller', 10, '1234', 'Estudiante'),
+(3, 'Linda Miller', 11, '1234', 'Estudiante'),
 (4, 'John Walker', 10, '1234', 'Estudiante'),
-(5, 'Lewis Hamilton', 9, '1234', 'Estudiante'),
-(6, 'Carlos Sainz', 8, '1234', 'Estudiante'),
+(5, 'Robert Smith', 9, '1234', 'Estudiante'),
+(6, 'James Johnson', 8, '1234', 'Estudiante'),
 (7, 'Steven Stones', 11, '1234', 'Profesor'),
-(8, 'Guenther Steiner', 8, '1234', 'Profesor'),
+(8, 'John Brown', 8, '1234', 'Profesor'),
 (9, 'Admin 2', NULL, '1234', 'Administrador');
+
 /*
 LOAD DATA INFILE 'Caoskol-Project\US_Dataset.csv'
 INTO TABLE notas
