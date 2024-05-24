@@ -13,7 +13,7 @@ def main():
     result_df = df.groupBy("grado").count()
 
     # Guarda los resultados en un archivo
-    result_df.write.csv("/root/Caoskol-Project/results.csv", mode="overwrite", header=True)
+    result_df.write.csv("/root/Caoskol-Project/results", mode="overwrite", header=True)
 
     # Detiene la sesión de Spark
     spark.stop()
