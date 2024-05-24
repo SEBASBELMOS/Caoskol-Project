@@ -41,9 +41,18 @@ INSERT INTO usuarios (id, nombre, grado, clave, rol) VALUES
 (9, 'Admin 2', NULL, '1234', 'Administrador');*/
 
 LOAD DATA INFILE 'Caoskol-Project\US_Dataset.csv'
-INTO TABLE tu_tabla
+INTO TABLE notas
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+
+
+LOAD DATA INFILE 'Caoskol-Project\US_Dataset.csv'
+INTO TABLE usuarios
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(id, nombre, grado, clave, rol);
