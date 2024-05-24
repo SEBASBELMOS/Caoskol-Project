@@ -9,8 +9,21 @@ def main():
     # Carga los datos
     notas_df = spark.read.csv("/root/Caoskol-Project/US_Dataset.csv", header=True, inferSchema=True)
 
+    # Imprimir los nombres de las columnas originales
+    print("Nombres de columnas originales:", notas_df.columns)
+
+    # Limpiar espacios en los nombres de las columnas
+    notas_df = notas_df.toDF(*[c.replace(' ', '').replace(')', '').replace('(', '').replace('VALUES', '') for c in notas_df.columns])
+
+    # Verificar los nombres de las columnas después de la limpieza
+    print("Columnas después de la limpieza:", notas_df.columns)
+
+
     # Limpiar espacios en los nombres de las columnas, incluyendo espacios internos y paréntesis
-    notas_df = notas_df.select([col(c).alias(c.replace(' ', '').replace(')', '').replace('(', '')) for c in notas_df.columns])
+    notas_df = notas_df.toDF(*[c.replace(' ', '').replace(')', '').replace('(', '') for c in notas_df.columns])
+
+    # Verificar los nombres de las columnas después de la limpieza
+    print("Columnas después de la limpieza:", notas_df.columns)
 
     # Calcular estadísticas descriptivas
     stats_df = notas_df.select(
@@ -38,7 +51,6 @@ def main():
     general_stats.show()
 
     # Distribución de Estudiantes por Grado
-    # Contar estudiantes por grado
     estudiantes_por_grado = notas_df.groupBy('grado').count()
     estudiantes_por_grado.show()
 
