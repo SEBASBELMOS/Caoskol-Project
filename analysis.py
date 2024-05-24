@@ -1,11 +1,16 @@
 import sys
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import mean, stddev, min, max, count, avg, corr
+from pyspark.sql.functions import mean, stddev, min, max, avg, corr, col
 
 def main():
+    # Inicia la sesión de Spark
     spark = SparkSession.builder.appName("Data_Analysis").getOrCreate()
 
-    notas_df = spark.read.csv("/root/Caoskol-Project/US_Dataset_users.csv", header=True, inferSchema=True)
+    # Carga los datos
+    notas_df = spark.read.csv("/root/Caoskol-Project/US_Dataset.csv", header=True, inferSchema=True)
+
+    # Limpiar espacios en los nombres de las columnas, incluyendo espacios internos y paréntesis
+    notas_df = notas_df.select([col(c).alias(c.replace(' ', '').replace(')', '').replace('(', '')) for c in notas_df.columns])
 
     # Calcular estadísticas descriptivas
     stats_df = notas_df.select(
@@ -32,7 +37,7 @@ def main():
     )
     general_stats.show()
 
-    #Distribución de Estudiantes por Grado
+    # Distribución de Estudiantes por Grado
     # Contar estudiantes por grado
     estudiantes_por_grado = notas_df.groupBy('grado').count()
     estudiantes_por_grado.show()
